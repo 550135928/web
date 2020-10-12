@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3动画跳动效果</title>
+</head>
+<style>
+    .box{
+        width: 50px;
+        height: 50px;
+        position: relative;
+    }
+    .box:before{
+        position: absolute;
+        width: 50px;
+        height: 8px;
+        background-color: #000;
+        opacity: 0.2;
+        top: 67px;
+        left: 0;
+        content: "";
+        border-radius: 50%;
+        animation: shadow 0.5s linear infinite;
+    }
+    .box:after{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+        animation: rotate 0.5s linear infinite;
+    }
+    body{
+        background:#bbd149;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    @keyframes shadow {
+        0%, 100% {transform: scaleX(1);}
+        50% {transform: scaleX(1.2);}
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+        25% {
+            transform: translateY(10px) rotate(22.5deg);
+        }
+        50% {
+            transform: translateY(20px) scale(1.1, 0.9) rotate(45deg);
+            border-bottom-right-radius: 50px;
+        }
+        75% {
+            transform: translateY(10px) rotate(67.5deg);
+        }
+        100% {
+            transform: translateY(0) rotate(90deg);
+        }
+    }
+</style>
+<body>
+  <div class="box"></div>
+</body>
+</html>
