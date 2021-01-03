@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #li1,#li2{width: 200px;height: 100px;background-color: yellow;list-style: none;margin-bottom: 20px;border: 4px solid #000000}
+    </style>
+    <script>
+        window.onload=function(){
+            var Li1=document.getElementById("li1");
+            var Li2=document.getElementById("li2");
+            Li1.onmouseover=function(){
+                startMove(this,"width",400)
+            };
+            Li1.onmouseout=function(){
+                startMove(this,"width",200)
+            };
+            Li2.onmouseover=function(){
+                startMove(this,"height",400)
+            };
+            Li2.onmouseout=function(){
+                startMove(this,"height",100)
+            };
+        function getStyle(obj,attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr]
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }}
+            function startMove(obj, attr, itarget) {
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    var icur = parseInt(getStyle(obj, attr));
+                    var speed = (itarget - icur) / 8;
+                    if(speed>0){speed=Math.ceil(speed)}else{speed=Math.floor(speed)}
+                    if (icur == itarget) {
+                        clearInterval(objtimer)
+                    } else {
+                        obj.style[attr] = icur + speed + "px";
+                    }
+                }, 30)
+            }}
+    </script>
+</head>
+<body>
+<ul>
+    <li id="li1"></li>
+    <li id="li2"></li>
+</ul>
+</body>
+</html>
